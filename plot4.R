@@ -19,7 +19,7 @@ renderXAxis <- function(df) {
   nr <- nrow(df)
   iax <- seq(1,nr,length.out=3)
   axis(1, at=df[iax,"Date"], 
-       labels=wday(df[iax,"Date"], label=TRUE))
+       labels=substr(wday(df[iax,"Date"], label=TRUE), 1, 3))
 }
 
 # render plot4
@@ -27,7 +27,7 @@ plot4 <- function(df) {
   # df = data frame, returned from readData()
   # Renders plot4
   png("plot4.png")
-  par(mar=c(4,5,2,1), cex=0.2, mfrow=c(2,2))
+  par(mar=c(5,4,3,1), cex=0.2, mfrow=c(2,2))
   # first subplot
   plot(df[,"Date"], df[,"Global active power"],
        type="l",

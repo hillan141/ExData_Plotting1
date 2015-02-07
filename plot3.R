@@ -20,7 +20,7 @@ plot3 <- function(df) {
   # df = data frame, returned from readData()
   # Renders plot3
   png(file="plot3.png")
-  par(mar=c(5,5,2,1), cex=0.8)
+  par(mar=c(5,4,3,1), cex=0.8)
   plot(df[,"Date"], df[,"Sub metering 1"],
        col="black",
        type="l",
@@ -36,12 +36,12 @@ plot3 <- function(df) {
   ltext <- gsub(" ", "_", names(df)[6:8])
   legend(x="topright", legend=ltext, 
          col=c("black", "red", "blue"), lty=1,
-         cex=0.5, y.intersp=0.5)
+         cex=1, y.intersp=1)
   # Render X-axis
   nr <- nrow(df)
   iax <- seq(1,nr,length.out=3)
   axis(1, at=df[iax,"Date"], 
-       labels=wday(df[iax,"Date"], label=TRUE))
+       labels=substr(wday(df[iax,"Date"], label=TRUE), 1, 3))
   dev.off()
 }
 

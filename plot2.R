@@ -19,7 +19,8 @@ readData <- function(infile="../household_power_consumption.txt",
 plot2 <- function(df) {
   # df = data frame, returned from readData()
   # Renders plot2
-  par(mar=c(5,5,2,1))
+  png("plot2.png")
+  par(mar=c(5,4,3,1))
   plot(df[,"Date"], df[,"Global active power"],
        type="l",
        xaxt="n",
@@ -29,8 +30,7 @@ plot2 <- function(df) {
   nr <- nrow(df)
   iax <- seq(1,nr,length.out=3)
   axis(1, at=df[iax,"Date"], 
-       labels=wday(df[iax,"Date"], label=TRUE))
-  dev.copy(png, file="plot2.png")      
+       labels=substr(wday(df[iax,"Date"], label=TRUE), 1, 3))
   dev.off()
 }
 

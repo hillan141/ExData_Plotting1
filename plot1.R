@@ -19,7 +19,7 @@ readData <- function(infile="../household_power_consumption.txt",
 plot1 <- function(df) {
   # df = data frame, returned from readData()
   png(file="plot1.png")
-  par(mar=c(5,5,2,1))
+  par(mar=c(5,4,3,1))
   hist(df[,"Global active power"],
        col=2, breaks=12,
        main="Global Active Power",
