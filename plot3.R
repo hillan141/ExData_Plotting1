@@ -19,6 +19,7 @@ readData <- function(infile="../household_power_consumption.txt",
 plot3 <- function(df) {
   # df = data frame, returned from readData()
   # Renders plot3
+  png(file="plot3.png")
   par(mar=c(5,5,2,1), cex=0.8)
   plot(df[,"Date"], df[,"Sub metering 1"],
        col="black",
@@ -34,13 +35,13 @@ plot3 <- function(df) {
   # Render legend
   ltext <- gsub(" ", "_", names(df)[6:8])
   legend(x="topright", legend=ltext, 
-         col=c("black", "red", "blue"), lty=1)
+         col=c("black", "red", "blue"), lty=1,
+         cex=0.5, y.intersp=0.5)
   # Render X-axis
   nr <- nrow(df)
   iax <- seq(1,nr,length.out=3)
   axis(1, at=df[iax,"Date"], 
        labels=wday(df[iax,"Date"], label=TRUE))
-  dev.copy(png, file="plot3.png")      
   dev.off()
 }
 
