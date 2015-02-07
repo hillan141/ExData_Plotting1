@@ -10,7 +10,7 @@ readData <- function(infile="../household_power_consumption.txt",
                           "numeric", "numeric", "numeric"),
              nrows=-1, na.strings="?")
   dft[,"Date"] <- dmy_hms(paste(dft[,"Date"], dft[,"Time"]))
-  dft <- subset(dft[,-2], Date>=minDate & Date<maxDate)
+  dft <- subset(dft[,-2], Date>=minDate & Date<=maxDate)
   colnames(dft) <- gsub("_", " ", colnames(dft))
   dft
 }
